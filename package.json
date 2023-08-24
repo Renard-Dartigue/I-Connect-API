@@ -1,0 +1,20 @@
+{
+  "name": "i-connect-api",
+  "version": "1.0.0",
+  "description": "Social medial API project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "I-Connect-API"
+  },
+  "author": "Renard-Dartigue",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "json": "^11.0.0",
+    "mongoose": "^7.4.4"
+  }
+}
