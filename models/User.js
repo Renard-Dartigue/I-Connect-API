@@ -1,20 +1,31 @@
 const { Schema, model } = require('mongoose');
-const thoughtSchema = require('./Thought');
+//const thoughtSchema = require('./Thought');
 const Thought = require('./Thought');
+const Friend = require('./User');
 
 //Schema for creating Student model
 const userSchema = new Schema(
     {
         username: {
             type: String,
-            require: true,
+            required: true,
         },
         email: {
             type: String,
-            require: true,
+            required: true,
         },
-        thoughts: [Thought],
-        friends: [Friend]
+        thoughts: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: 'Thought',
+            }
+        ],
+        friends: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: 'User',
+            }
+        ]
     },
     {
         toJSON: {
@@ -25,9 +36,9 @@ const userSchema = new Schema(
 );
 
 userSchema.virtual('friendCount').get(function () {
-    return this.friend.length;
+    return this.friends.length;
 });
 
-const User = model('user', userSchema);
+const User = model('User', userSchema);
 
 module.exports = User;
