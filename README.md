@@ -1,14 +1,18 @@
+
+
+
+
 # I-Connect 
 
 ## Description
-"I-Connect" is a custom API for social network applications. Users are able to share posts called "thoughts". They can also create a friends list and comment/react to their friends thoughts.
+"I-Connect" is a custom API for social network applications. Users are able to share posts called "thoughts". They can also create a friends list and comment/react to their friend's thoughts.
 
 ## Usage
-Clone Repository to local environment by copying SSH into the terminal after typing
+Clone Repository your local environment by copying SSH into the terminal after typing
 ``` git clone```
 
 ## Demo
-(Work-in-Progress)
+https://github.com/Renard-Dartigue/I-Connect-API/assets/136762719/c8a46c43-9e4e-4ec1-8d55-bef5184838d4
 
 ## License 
 MIT License
