@@ -17,6 +17,17 @@ connection.once('open', async () => {
     const users = [];
     const thoughts = getRandomThought(10);
 
+    for (let i = 0; i < 20; i++) {
+        const username = getRandomUser();
+
+        userCheck.push({
+            username,
+            email,
+            thoughts,
+            friends,
+        })
+    }
+
     await User.collection.insertMany(users);
     await Thought.collection.insertMany(thoughts);
 
