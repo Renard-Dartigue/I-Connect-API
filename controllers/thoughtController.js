@@ -1,6 +1,6 @@
 const { Thought, User } = require('../models');
 
-module.export = {
+const thoughtController = {
     //=================================GET ALL THOUGHTS================================================================================
     async getThoughts(req, res) {
         try {
@@ -28,7 +28,7 @@ module.export = {
     async createThought(req, res) {
         try {
             const thought = await Thought.create(req.body);
-            const user = await User.findOneandUpdate(
+            const user = await User.findOneAndUpdate(
                 { _id: req.body.userId},
                 { $addToSet: { thoughts: thought._id}},
                 { new: true}
@@ -67,15 +67,15 @@ module.export = {
     //====================================DELETED THOUGHT=============================================================================
     async deleteThought(req, res) {
         try {
-            const thought = await Thought.findOneAndRemove({ _id: req.params.videoId });
+            const thought = await Thought.findOneAndRemove({ _id: req.params.thoughtId });
 
             if (!thought) {
-                return res.status(404).json({ message: 'No video with this id!' });
+                return res.status(404).json({ message: 'No thoughts with this id!' });
             }
 
             const user = await User.findOneAndUpdate(
-                { videos: req.params.thoughtId },
-                { $pull: { thought: req.params.videoId } },
+                { thoughts: req.params.thoughtId },
+                { $pull: { thought: req.params.thoughtId } },
                 { new: true }
             );
             if (!user) {
@@ -127,3 +127,4 @@ module.export = {
     },
 };
 
+module.exports = thoughtController;
