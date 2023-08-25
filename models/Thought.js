@@ -13,7 +13,6 @@ const thoughtSchema = new Schema(
             type: Date,
             default: Date.now,
         },
-        //TODO: Complete username and reactions
         username: {
             type: String,
             required: true,
