@@ -5,7 +5,7 @@ const { getRandomUser, getRandomThought } = require('./data');
 connection.once('open', async () => {
     console.log('connected');
 
-    let thoughtCheck = await connection.db.listCollections({ name: 'videos' }).toArray();
+    let thoughtCheck = await connection.db.listCollections({ name: 'thoughts' }).toArray();
     if (thoughtCheck.length) {
         await connection.dropCollection('thoughts');
     }
@@ -14,13 +14,15 @@ connection.once('open', async () => {
         await connection.dropCollection('users');
     }
 
-    const users = [];
     const thoughts = getRandomThought(10);
 
+    const users = [];
     for (let i = 0; i < 20; i++) {
         const username = getRandomUser();
+        const email = `user${i}@example.com`;
+        const friends = [];
 
-        userCheck.push({
+        users.push({
             username,
             email,
             thoughts,

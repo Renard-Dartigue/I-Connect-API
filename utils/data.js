@@ -51,10 +51,21 @@ const users = [];
 
 const getRandomArrItem = (arr) => arr[Math.floor(Math.random() * arr.length)];
 
-const getRandomName = () =>
+const getRandomUser = () =>
     `${getRandomArrItem(names)}`;
 
 const getRandomThought = (int) => {
+    const getThoughtReactions = (count) => {
+        const reactions = [];
+        for (let i = 0; i < count; i++) {
+            reactions.push({
+                text: getRandomArrItem(possibleResponses),
+                likes: Math.floor(Math.random() * 100),
+            });
+        }
+        return reactions;
+    };
+
         let results = [];
         for (let i = 0; i < int; i++) {
             results.push({
@@ -65,4 +76,9 @@ const getRandomThought = (int) => {
         }
 
         return results;
+};
+
+module.exports = {
+    getRandomThought,
+    getRandomUser,
 };
